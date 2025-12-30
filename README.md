@@ -1,73 +1,95 @@
-# React + TypeScript + Vite
+# CardioFlow3D
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CardioFlow3D is a biomedical engineering proof-of-concept project focused on the automation of cardiac segmentation from CT scans and the conceptual design of a digital workflow to support cardiothoracic surgery planning.
 
-Currently, two official plugins are available:
+This project was developed within the Biomedical Engineering degree at NOVA FCT, in collaboration with Hospital de Santa Marta.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Background
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Manual cardiac segmentation from CT images is a time-consuming and operator-dependent process, often requiring several hours of expert work per case. These limitations reduce scalability, introduce variability, and hinder the integration of advanced 3D modelling into routine clinical workflows.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Project Objectives
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The main goals of CardioFlow3D were:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- To explore the feasibility of AI-based automatic cardiac segmentation using deep learning
+- To evaluate time savings and consistency relative to manual segmentation
+- To conceptually design a digital workflow that guides clinicians from CT acquisition to 3D model validation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This project is intended as a **prototype and proof of concept**, not as a clinically validated system.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Technical Approach
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### AI-Based Segmentation
+- A deep learning segmentation pipeline was trained using the MONAI framework
+- Integration with 3D Slicer enabled preprocessing, inference, and visualization
+- The focus was on demonstrating feasibility rather than clinical performance optimisation
+
+### Web Platform (Demonstrator)
+- A web-based platform (CardioFlow3D) was developed as a demonstrator
+- The platform conceptually guides the user through the full workflow:
+  1. CT import
+  2. Cardiac series selection
+  3. Segmentation
+  4. 3D model export
+  5. Visualization and validation
+
+The platform is **not fully functional** and is intended solely to illustrate how such a system could be implemented with further development and investment.
+
+🔗 Demonstrator website:  
+https://cardioflow-3d.vercel.app/
+
+---
+
+## Results
+
+- Significant reduction in segmentation time compared to manual workflows
+- Improved consistency and reproducibility in generated segmentations
+- Successful demonstration of an end-to-end conceptual pipeline
+
+All results should be interpreted in the context of a prototype-level study.
+
+---
+
+## Clinical Context
+
+This project was developed using anonymized clinical imaging data in collaboration with:
+
+- Hospital de Santa Marta (Lisbon)
+
+No clinical deployment or patient-facing use was performed.
+
+---
+
+## Limitations
+
+- Prototype-level implementation
+- Limited dataset
+- No formal clinical validation
+- No integration with hospital PACS or clinical information systems
+
+---
+
+## Future Work
+
+- Expansion of training datasets
+- Systematic clinical validation with medical teams
+- Integration with PACS and hospital workflows
+- Robustness and performance optimisation
+- Regulatory and safety assessment
+
+---
+
+## Authors
+
+- Guilherme Pereira  
+- Diogo Casquinha  
+- Vicente Soares  
+
+Biomedical Engineering — NOVA FCT
